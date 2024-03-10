@@ -16,5 +16,10 @@ Habiendo instalado Linux, se procedió a realizar la instalación de Quartus, pa
 
 
 *Instalación de Questa*
+  
+   Primero en MicrosoftOnline.com podemos obtener los dos paquetes que harán las veces de instalador para nuestro software Questa. debemos descargar los dos tipos de paquetes, el de tipo .run y el .qdz. Descargados los archivos otorgamos permisos con el comando chmod +x *.run y seguido ./*.run 
+
+   ![Captura de pantalla de 2024-03-10 07-40-21](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/25148da4-8116-4b25-9b3e-7c4a1ba29472)
+
 
 *Descarga e implementación de la licencia de Intel para habilitar el uso de Questa en Quartus*
