@@ -73,7 +73,9 @@ Figura 6 (Enlace simbólico creado)
    damos clic en siuiente y elegimos la edición Intel FPGA Starter Edition, aceptamos términos y condiciones y procedemos a completar la instalación.
 
 
-*Obtención licencia de Questa*
+
+*Descarga e implementación de la licencia de Intel para habilitar el uso de Questa en Quartus*
+
 ingresamos al Self-Service Licensing Center de Intel para crear una cuenta en intel azure portal e inscribirse
 en la opción Enroll for Intel® FPGA Self Service Licensing Center (SSLC).
 Confirmamos nuestra cuenta usando nuestro teléfono móvil.
@@ -104,4 +106,3 @@ export LM_LICENSE_FILE=path_del_archivo/nombre_archivo.dat
 
 
 
-*Descarga e implementación de la licencia de Intel para habilitar el uso de Questa en Quartus*
