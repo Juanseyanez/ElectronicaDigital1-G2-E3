@@ -7,7 +7,8 @@ Para poder realizar la instalación correctamente del OS Linux, ya fuera para su
 
 Ya con esto realizado, se apaga el dispositivo. Antes de encenderlo nuevamente, se conecta la USB que contiene la distribución de Linux, de manera que al encenderlo y dirigirse a la BIOS, se pueda acceder a la misma y comenzar a ejecutar el archivo de instalación del OS. 
 
-*Instalación de Quartus*
+*Instalació
+n de Quartus*
 
 Habiendo instalado Linux, se procedió a realizar la instalación de Quartus, para esto, en la pagina de decarga de la misma, se procedió a seleccionar la versión a utilizar, la cual, para esta ocasión es _Lite Edition_. Posterior a la descarga del mismo, se otorgarón permisos con el comando.
 
@@ -15,9 +16,19 @@ Habiendo instalado Linux, se procedió a realizar la instalación de Quartus, pa
    ```chmod +x qinst-lite-linux-23.1std-991.run ```
    
 Y posterior a esto, se ejecutó el siguiente comando
+
    ``` ./qinst-lite-linux-23.1std-991.run```
 
-Lo anterior se realizó, tal y como se muestra en la imagen de la figura 2.
+Lo anterior se realizó, tal y como se mevidencia en la imagen de la figura 2.
+
+![Figura 2](images/Figura2.jpeg)
+Figura 2 (Línea de comandos)
+
+De esta manera se ejecutó el instalador de quartus, en el cual, fueron seleccionadas todas las casillas para posteriormente realizar las descargas respectivas de todas  las dependencias. Posterior a esto, se presentó un incidente en la instalación, la cual no permitía instalar automáticamente las dependencias descargadas. Razón por la cual, se optó por evitar la instalación automática y realizar más bien la instalación manual de cada una de las dependencias. 
+
+
+
+
 
 
 
