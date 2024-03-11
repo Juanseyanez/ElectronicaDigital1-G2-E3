@@ -80,19 +80,28 @@ Confirmamos nuestra cuenta usando nuestro teléfono móvil.
 
 ![image](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/98906f65-7391-4db3-9b64-1ab9cdabb0bf)
 
+Ya con la cuenta creada en el portal elegimos la opción Sing up for Evaluation or No-Cost License.
+y seleccionamos la opción la opción Questa*-Intel® FPGA Starter.
 
+Llenamos los campos de computer name, type license, computer type y Primary Computer ID.
 Tras guardar y generar dicha licencia nos llegará a nuestro correo un archivo .dat que nos permitirá vincular la licencia con nuestro software.
 
 ![image](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/7fad3fb4-7629-4c0b-a218-6950d974e5b7)
 
+Ya con el archivo descargado configuramos la licencia en la IDE de Quartus:
+
+por medio de la opción licence setup cargamos el archivo .dat de nuestra licencia y lo guardamos
+![image](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/24abf2ab-81d4-4df5-915e-06dd67a20e73)
+
+
+Finalmente Configuramos las variables de entorno de la licencia:
+
+En el archivo .bashrc pegamos la siguiente línea de código
+export LM_LICENSE_FILE=path_del_archivo/nombre_archivo.dat
 
 
 
 
-Ya con la cuenta creada en el portal elegimosla opción Sing up for Evaluation or No-Cost License.
-y seleccionamos la opción la opción Questa*-Intel® FPGA Starter.
-
-Llenamos los campos de computer name, type license, computer type y Primary Computer ID.
 
 
 *Descarga e implementación de la licencia de Intel para habilitar el uso de Questa en Quartus*
