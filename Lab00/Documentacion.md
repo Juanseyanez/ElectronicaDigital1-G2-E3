@@ -66,14 +66,24 @@ Figura 6 (Enlace simbólico creado)
 *Instalación de Questa*
 --
   
-   Primero en MicrosoftOnline.com podemos obtener los dos paquetes que harán las veces de instalador para nuestro software Questa. debemos descargar los dos tipos de paquetes, el de tipo .run y el .qdz. Descargados los archivos otorgamos permisos con el comando 
-   
-   
-   ```chmod +x *.run ``` y seguido ```./*.run ```
-   
+ Primero en MicrosoftOnline.com podemos obtener los dos paquetes que harán las veces de instalador para nuestro software Questa. debemos descargar los dos tipos de paquetes, el de tipo .run y el .qdz. Descargados los archivos otorgamos permisos con el comando chmod +x *.run y seguido ./*.run 
 
    ![Captura de pantalla de 2024-03-10 07-40-21](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/25148da4-8116-4b25-9b3e-7c4a1ba29472)
 
+   damos clic en siuiente y elegimos la edición Intel FPGA Starter Edition, aceptamos términos y condiciones y procedemos a completar la instalación.
+
+
+*Obtención licencia de Questa*
+ingresamos al Self-Service Licensing Center de Intel para crear una cuenta en intel azure portal e inscribirse
+en la opción Enroll for Intel® FPGA Self Service Licensing Center (SSLC).
+Confirmamos nuestra cuenta usando nuestro teléfono móvil.
+
+![image](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/98906f65-7391-4db3-9b64-1ab9cdabb0bf)
+
+Ya con la cuenta creada en el portal elegimosla opción Sing up for Evaluation or No-Cost License.
+y seleccionamos la opción la opción Questa*-Intel® FPGA Starter.
+
+Llenamos los campos de computer name, type license, computer type y Primary Computer ID.
 
 
 *Descarga e implementación de la licencia de Intel para habilitar el uso de Questa en Quartus*
