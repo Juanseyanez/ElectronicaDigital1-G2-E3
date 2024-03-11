@@ -79,6 +79,12 @@ en la opción Enroll for Intel® FPGA Self Service Licensing Center (SSLC).
 Confirmamos nuestra cuenta usando nuestro teléfono móvil.
 
 ![image](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/98906f65-7391-4db3-9b64-1ab9cdabb0bf)
+Tras guardar y generar dicha licencia nos llegará a nuestro correo un archivo .dat que nos permitirá vincular la licencia con nuestro software.
+![image](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/7fad3fb4-7629-4c0b-a218-6950d974e5b7)
+
+
+
+
 
 Ya con la cuenta creada en el portal elegimosla opción Sing up for Evaluation or No-Cost License.
 y seleccionamos la opción la opción Questa*-Intel® FPGA Starter.
