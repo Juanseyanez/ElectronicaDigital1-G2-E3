@@ -1,5 +1,6 @@
 *Cración y desarrollo del proyecto en Quartus*
 -
+### 1. Compuertas lógicas
 
 En principio, se debe correr el entorno de desarrollo dec Quartus y seleccionar la opción *New Project Wizard*, desde la cual se deben seguir lo pasos de creación del proeyecto. Se recomienda destinar una carpeta específica para el proyecto, por ahora no adicionar archivos al proyecto y como se trata de una simulación cualquier FPGA debería funcionar.
 ![Figura 1](imagenes/figura1.png)
@@ -37,5 +38,7 @@ TABLA DE VERDAD XOR
 ![imagen](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/646083b4-994d-4852-9581-3d924a10bb33)
 
 
-
 ![Figura 4](imagenes/figura4.png)
+
+### 2. Sumador de un bit.
+
