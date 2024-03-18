@@ -20,8 +20,21 @@ COMPUERTA NOT
 COMPUERTA AND
 
 ![imagen](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/817b261b-6fb9-434f-8073-ba444ce19592)
-tABLA DE VERDAD AND
-![imagen](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/6ce10dad-d74e-4374-bf47-8af74e3dfded)
+
+TABLA DE VERDAD AND
+
+![imagen](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/7fb79d37-37dc-43f7-9887-bf98367563b2)
+
+COMPUERTA OR
+![imagen](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/a9a1183d-e47d-4e12-bdcf-fb9a8bb9369d)
+
+TABLA DE VERDAD OR
+
+![imagen](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/da9fdb6c-8980-44ec-a95b-aae573077b2c)
+
+COMPUERTA XOR
+TABLA DE VERDAD XOR
+![imagen](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/646083b4-994d-4852-9581-3d924a10bb33)
 
 
 
