@@ -42,3 +42,5 @@ TABLA DE VERDAD XOR
 
 ### 2. Sumador de un bit.
 
+De manera similar que con las compuertas, se define el proyecto para el desarrollo del sumador, allí se redacta la entidad del sumador tomando como entradas A, B y el acarreo de entrada Ci de un bit. Asimismo, como salidas, la salida general y el acarreo de salida.
+![Figura 8](imagenes/figura8.png)
