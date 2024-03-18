@@ -13,4 +13,16 @@ En primer lugar se usa la libreria del IEEE para *Standard Logic* como
 Posteriormente se definen los pines de entrada y salida en ```Entity``` dandoles tipo *std_logic*. Después se define la arquitectura como el flujo de datos para estos pines, con cada salida como la operación de las entradas
 ![Figura 3](imagenes/figura3.png)
 Asegurandose de no tener errores en código se procede a hacer la compilación y visualizar la forma en qué compilo una vez sea exitosa.
+*COMPUERTAS A SIMULAR: Not , and , or*
+
+COMPUERTA NOT
+![imagen](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/9af03a8d-529b-42c3-8296-d5c6bde38ee9)
+COMPUERTA AND
+
+![imagen](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/817b261b-6fb9-434f-8073-ba444ce19592)
+tABLA DE VERDAD AND
+![imagen](https://github.com/Juanseyanez/ElectronicaDigital1-G2-E3/assets/150001189/6ce10dad-d74e-4374-bf47-8af74e3dfded)
+
+
+
 ![Figura 4](imagenes/figura4.png)
