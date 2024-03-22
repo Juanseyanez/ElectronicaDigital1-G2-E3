@@ -51,7 +51,7 @@ Con estos archivos se crea un proyecto en el simulador *Questa*
 Añandiendolos de la forma
 ![Figura 11](imagenes/figura11.png)
 Y se usan los comandos:
-```vsim testbench``` para invocar el simulador con el banco de pruebas
-```add wave *``` para importar las señales de entrada definias
-```run 90ns``` para correr la simulación el tiempo suficiente para comprobar la tabla de verdad esperada
+* ```vsim testbench``` para invocar el simulador con el banco de pruebas
+* ```add wave *``` para importar las señales de entrada definidas
+* ```run 90ns``` para correr la simulación el tiempo suficiente para comprobar la tabla de verdad esperada
 ![Figura 12](imagenes/figura12.png)
