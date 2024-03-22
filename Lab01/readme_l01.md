@@ -1,4 +1,4 @@
-*Cración y desarrollo del proyecto en Quartus*
+*Creación y desarrollo del proyecto en Quartus*
 -
 ### 1. Compuertas lógicas
 
@@ -45,7 +45,13 @@ TABLA DE VERDAD XOR
 De manera similar que con las compuertas, se define el proyecto para el desarrollo del sumador, allí se redacta la entidad del sumador tomando como entradas A, B y el acarreo de entrada Ci de un bit. Asimismo, como salidas, la salida general y el acarreo de salida.
 ![Figura 8](imagenes/figura8.png)
 Para esta configuración del sumador se describe el archivo testbench de la siguiente forma.
-Con estos archivos se crea un proyecto en el simulador *Questa* y se usan los comandos:
+![Figura 9](imagenes/figura9.png)
+Con estos archivos se crea un proyecto en el simulador *Questa* 
+![Figura 10](imagenes/figura10.png)
+Añandiendolos de la forma
+![Figura 11](imagenes/figura11.png)
+Y se usan los comandos:
 ```vsim testbench``` para invocar el simulador con el banco de pruebas
 ```add wave *``` para importar las señales de entrada definias
 ```run 90ns``` para correr la simulación el tiempo suficiente para comprobar la tabla de verdad esperada
+![Figura 12](imagenes/figura12.png)
