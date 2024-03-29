@@ -56,6 +56,8 @@ Siguiendo estos pasos cuidadosamente, se logró una configuración exitosa de la
 
 ## Implementación del sumador de 1 bit
 
+Para la implementación de este, se utilizó la herramienta Quartus, en la cual, se creó un nuevo proyecto Wizard y se abrió el archivo verilog que se había elaborado previamente, en el cual se tenía el sumador de 1 bit. Posterior a cargar el archivo .v en el proyecto, se sintetizó, para verificar su correcto funcionamiento y se procedió a establecer los pines de entrada y salida. En este caso, fueron seleccionados como pines de entrada los pines 58 y 59, mientra que, para los pines de salida, fueron seleccionados los pines 74 y 73, correspondientes a los diodos LED D5 y D4 respectivamente. Para el caso del pin de salida 73, este viene representando el resultado de la suma y el pin 74 representa el Carry Out.
+
 ## Implementación del sumador de 4 bits
 
 
