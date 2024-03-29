@@ -58,7 +58,40 @@ Siguiendo estos pasos cuidadosamente, se logró una configuración exitosa de la
 
 Para la implementación de este, se utilizó la herramienta Quartus, en la cual, se creó un nuevo proyecto Wizard y se abrió el archivo verilog que se había elaborado previamente, en el cual se tenía el sumador de 1 bit. Posterior a cargar el archivo .v en el proyecto, se sintetizó, para verificar su correcto funcionamiento y se procedió a establecer los pines de entrada y salida. En este caso, fueron seleccionados como pines de entrada los pines 58 y 59, mientra que, para los pines de salida, fueron seleccionados los pines 74 y 73, correspondientes a los diodos LED D5 y D4 respectivamente. Para el caso del pin de salida 73, este viene representando el resultado de la suma y el pin 74 representa el Carry Out.
 
+![Pines1](images/Pines1.png)
+
+![FPGA](images/FPGA.png)
+
+
 ## Implementación del sumador de 4 bits
 
+El proceso para el sumador de 4 bits, fue bastante similar, salvo porque se establecieron más pines de entrada y de salida, esto debido a que las entradas fueron de 4 bits, razón por la cual, se dispuso de los pines como se muestra a continuación:
+
+### Pines de entrada
+| PIN | Representa |
+|---|---|
+| P58 | Bit más significativo N°A|
+| P59 | Segundo bit N°A|
+| P60 | Tercer bit N°A|
+| P64 | Bit menos significativo N°A|
+| P65 | Bit más significativo N°B|
+| P66 | Segundo bit N°B|
+| P67 | Tercer bit N°B|
+| P68 | Bit menos significativo N°B|
+
+### Pines de salida
+| Diodo | PIN | Representa |
+|---|---|---|
+| D5 | P74 | Cout |
+| D4 | P73 | Primer bit |
+| D9 | P77 | Segundo bit |
+| D10 | P76 | Tercer bit |
+| D11 | P75 | Cuarto bit |
+
+
+![Pines2](images/Pines2.png)
+
+
+## Vídeo Sumador de 1 y 4 bits
 
 https://drive.google.com/file/d/1n4_vGHJkLs9NriLL48p_FoYGlR4W2K7c/view?usp=drive_link 
