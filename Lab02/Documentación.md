@@ -57,3 +57,6 @@ Siguiendo estos pasos cuidadosamente, se logró una configuración exitosa de la
 ## Implementación del sumador de 1 bit
 
 ## Implementación del sumador de 4 bits
+
+
+https://drive.google.com/file/d/1n4_vGHJkLs9NriLL48p_FoYGlR4W2K7c/view?usp=drive_link 
