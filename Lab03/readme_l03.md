@@ -168,7 +168,7 @@ endmodule
 ```
 Este testbench fue el utilizado para simular el comportamiento del sumador de 3 bits (Sum3b). Primero, se instancian los puertos del módulo bajo prueba (uut). Luego, se generan varios casos de prueba para evaluar el sumador bajo diferentes condiciones de entrada.
 
-## Visualización del sumador de 3 bits
+## Visualización del sumador de 3 bits en la FPGA
 
 
 (Simulación)
