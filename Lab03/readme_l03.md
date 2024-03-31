@@ -82,6 +82,7 @@ module BCDtoSSeg(
 endmodule
 ```
 
+[Vídeo FPGA decimal](images/vidDec.mp4)
 
 
 
