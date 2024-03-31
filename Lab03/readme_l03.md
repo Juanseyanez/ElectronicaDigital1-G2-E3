@@ -58,7 +58,7 @@ Para visualizar los números decimales (solamente del 0 al 9), se limitó el có
 
 
 
-```
+```verilog
 module BCDtoSSeg(
   input [3:0] BCD,
   output reg [0:6] SSeg,
@@ -100,7 +100,7 @@ Para este caso, el testbench fue el mismo que se utilizó para la visualización
 
 Para implementar el sumador de 3 bits en la FPGA y poder visualizar el resultado en los displays de la misma. primero se construyó el respectivo sumador, instanciando al sumador de 1 bit creado en el primer laboratorio.
 
-```
+```verilog
 `include "Sum.v"
 module Sum3b(
     input [2:0] a, b, // Entradas de 3 bits
@@ -120,7 +120,7 @@ endmodule
 ```
 
 ### Simulación del sumador de 3 bits
-```
+```verilog
 `include Sum3b
 `timescale 1ps / 1ps
 
