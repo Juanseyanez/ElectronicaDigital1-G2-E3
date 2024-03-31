@@ -81,9 +81,10 @@ module BCDtoSSeg(
   assign an = 4'b1110;
 endmodule
 ```
-
-[Vídeo FPGA decimal](images/vidDec.mp4)
-
+<video width="320" height="240" controls>
+  <source src="images/vidDec.mp4" type="video/mp4">
+  Tu navegador no soporta la etiqueta de video.
+</video>
 
 
 ## Sumador de 3 bits
