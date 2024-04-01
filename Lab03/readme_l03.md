@@ -79,12 +79,6 @@ module BCDtoSSeg(
       4'b0111: SSeg = 7'b0001111; // "7" 
       4'b1000: SSeg = 7'b0000000; // "8"  
       4'b1001: SSeg = 7'b0000100; // "9" 
-      4'hA: SSeg = 7'b0001000;    // "A"
-      4'hB: SSeg = 7'b1100000;    // "B"
-      4'hC: SSeg = 7'b0110001;    // "C"
-      4'hD: SSeg = 7'b1000010;    // "D"
-      4'hE: SSeg = 7'b0110000;    // "E"
-      4'hF: SSeg = 7'b0111000;    // "F"
       default: SSeg = 7'b1111111; // Apagar todos los segmentos si no es un BCD válido
     endcase
   end
