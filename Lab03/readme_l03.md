@@ -41,8 +41,9 @@ endmodule
 En el cual se toma un número BCD de 4 bits como entrada (BCD) y genera las señales para mostrar este número en un display de siete segmentos. Además, también genera las señales de control para activar un display de ánodo común. Notese que ha sido necesario negar la salida para el correcto funcionamiento del mismo, ya que la lógica de la FPGA es negada.
 
 Por otro lado la disposición de pines se realizó de la siguiente manera:
+![Pines](images/Pines.png)
 
-(Pines)
+
 
 Para la simulación se creó el siguiente testbench y se ejecutó el archivo vcd resultante en GTKwave.
 ```
@@ -174,7 +175,8 @@ endmodule
 ```
 Este testbench fue el utilizado para simular el comportamiento del sumador de 3 bits (Sum3b). Primero, se instancian los puertos del módulo bajo prueba (uut). Luego, se generan varios casos de prueba para evaluar el sumador bajo diferentes condiciones de entrada.
 
-(SimulacionSum3b)
+![SimulacionSum3b](images/SimulacionSum3b.png)
+
 
 
 
