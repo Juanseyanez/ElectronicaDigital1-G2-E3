@@ -121,55 +121,99 @@ endmodule
 
 ### Simulación del sumador de 3 bits
 ```verilog
-`include Sum3b
+`include "Sum3b.v"
 `timescale 1ps / 1ps
 
-module tb_Sum3b;
+module Sum3b_tb;
 
-  // Definición de los puertos
-  reg [2:0] a, b;
-  reg cin;
-  wire [2:0] S;
-  wire cout;
+// Parámetros
+parameter WIDTH = 3;
 
-  // Instanciación del módulo Sum3b
-  Sum3b uut (
-    .a(a),
-    .b(b),
-    .cin(cin),
-    .S(S),
-    .cout(cout)
-  );
+// Definición de señales
+reg [WIDTH-1:0] a_tb, b_tb;
+reg cin_tb;
 
-  // Generación de estímulos
-  initial begin
-    $dumpfile("tb_Sum3b.vcd");
-    $dumpvars(0, tb_Sum3b);
+wire [WIDTH-1:0] S_tb;
+wire cout_tb;
 
-    // Test 1: a = 3'b001, b = 3'b010, cin = 0
-    a = 3'b001; b = 3'b010; cin = 0;
-    #1;
+// Instanciación del sumador de 4 bits
+Sum3b uut(a_tb,b_tb,cin_tb,S_tb,cout_tb
+);
 
-    // Test 2: a = 3'b101, b = 3'b110, cin = 1
-    a = 3'b101; b = 3'b110; cin = 1;
-    #1;
+// Estímulos
+initial begin
+a_tb = 101;
+b_tb = 111;
+cin_tb = 0;
+#1 //cantiadad de unidades de tiempo que quiero que las variables esten en 0
+a_tb = 110;
+b_tb = 0;
+cin_tb = 0;
+#1
+a_tb = 110;
+b_tb = 100;
+cin_tb = 0;
+#1
+a_tb = 010;
+b_tb = 101;
+cin_tb = 0;
+#1
+a_tb = 111;
+b_tb = 111;
+cin_tb = 0;
 
-    $finish;
-  end
-
-  initial begin: TEST_CASE
-    $dumpfile("Sum3b_sim.vcd");
-    $dumpvars(-1,uut);
-    #20; $finish;
 end
 
+initial begin: TEST_CASE
+    $dumpfile("Sum3b_sim.vcd");
+    $dumpvars(-1,uut);
+    #5; $finish;
+end
 
 endmodule
 ```
 Este testbench fue el utilizado para simular el comportamiento del sumador de 3 bits (Sum3b). Primero, se instancian los puertos del módulo bajo prueba (uut). Luego, se generan varios casos de prueba para evaluar el sumador bajo diferentes condiciones de entrada.
 
+(SimulacionSum3b)
+
+
+
 ## Visualización del sumador de 3 bits en la FPGA
 
+
+```verilog
+`include "Sum3b.v"
+`include "BCDtoSSeg.v"
+module Sum3toSSeg(
+    input [2:0] a, b, // Entradas de 3 bits
+    input cin,        // Carry in
+    output [0:6] SSeg,// Display de 7 segmentos
+    output [3:0] an   // Anodos comunes para multiplexación
+);
+
+  wire [2:0] sum_out; // Salida del sumador de 3 bits
+  wire cout;          // Carry out del sumador
+
+  Sum3b Sumador3bits(
+    .a(a),
+    .b(b),
+    .cin(cin),
+    .S(sum_out),
+    .cout(cout)
+  );
+
+  wire [3:0] BCD_out; // Salida del sumador en formato BCD
+  assign BCD_out = {cout, sum_out[2], sum_out[1], sum_out[0]};
+
+  BCDtoSSeg Display(
+    .BCD(BCD_out),
+    .SSeg(SSeg),
+    .an(an)
+  );
+
+endmodule
+
+```
 
 (Simulación)
 
