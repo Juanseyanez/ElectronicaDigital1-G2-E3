@@ -211,5 +211,47 @@ endmodule
 
 ```
 
-(Simulación)
+Para realizar la simulación del código para implementar en la FPGA, se tiene el siguiente el siguiente código de testbench:
 
+```verilog
+`timescale 1ns / 1ns
+module tb_Sum3btoSSeg;
+	
+	//Definición de señales de entrada y salida
+	reg [2:0] A, B;
+	reg cin;
+	wire [0:6] sseg;
+	wire [3:0] an;
+	
+	// Instancia del sumador
+	Sum3toSSeg Sumador3bits(
+		 .a(A),
+		 .b(B),
+		 .cin(cin),
+		 .SSeg(sseg),
+		 .an(an)
+	  );
+	// Estimulos, tomando 4 ejemplos distintos de suma cada 20 ns
+	initial begin
+	A = 3'b010;
+	B = 3'b110;
+	cin = 0;
+   #20;
+	A = 3'b001;
+	B = 3'b010;
+	cin = 0;
+	#20;
+	A = 3'b111;
+	B = 3'b110;
+	cin = 0;
+	#20;
+	A = 3'b101;
+	B = 3'b001;
+	cin = 0;
+	#20;
+	end
+endmodule 
+
+```
+De realizar la simulación en Questa, para los cuatro casos se obtuvo:
+![Simulacion Sum3toSSeg](images/Simulacion_SSEG_FPGA.png)
