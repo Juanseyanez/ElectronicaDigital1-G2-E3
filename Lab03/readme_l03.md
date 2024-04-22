@@ -45,13 +45,39 @@ Por otro lado la disposición de pines se realizó de la siguiente manera:
 
 
 
-Para la simulación se creó el siguiente testbench y se ejecutó el archivo vcd resultante en GTKwave.
-```
-Código para el Simulador
+Para la simulación se creó el siguiente testbench y se ejecutó la simulación empleando Questa.
+```verilog
+`timescale 1ns / 1ns
+module tb_BCDtoSSeg;
 
-```
+	//Definicion de señales de entrada y salida
+	reg [3:0] A;
+	wire [0:6] sseg;
+	wire [3:0] an;
 
-(Simulación)
+	// Instancia del codificador a siete segmentos
+  BCDtoSSeg Display(
+    .BCD(A),
+    .SSeg(sseg),
+    .an(an)
+  );
+	// Estimulos, casos a simular
+	initial begin
+	A = 4'b0010;
+   #20;
+	A = 4'b1001;
+	#20;
+	A = 4'b0111;
+	#20;
+	A = 4'hb;
+	#20;
+	A = 4'he;
+	#20;
+	end
+endmodule 
+```
+Para los cuatro casos probados: 2, 7, 9, b y e. Se obtiene la siguiente simulación corroborando los resultados esperados.
+![Simulacion visualización número hexadecimal](images/Simulacion_BCDh.png)
 
 ## Números en decimal
 
@@ -86,9 +112,9 @@ module BCDtoSSeg(
 endmodule
 ```
 
-Para este caso, el testbench fue el mismo que se utilizó para la visualización de números en hexadecimal.
+Para este caso, el testbench tiene la misma estructura que el que se utilizó para la visualización de números en hexadecimal. Comprobando esta vez el funcionamiento, dando otros valores de entrada.
 
-(Simulación)
+![Simulacion visualización número decimal](images/Simulacion_BCDd.png)
 
 
 ## Sumador de 3 bits
@@ -255,3 +281,6 @@ endmodule
 ```
 De realizar la simulación en Questa, para los cuatro casos se obtuvo:
 ![Simulacion Sum3toSSeg](images/Simulacion_SSEG_FPGA.png)
+
+Confirmando que para los casos presentados se encuentra el resultado esperado
+![Resultados esperados suma de 3 btis e implementación FPGA](images/sumas_tab.png)
