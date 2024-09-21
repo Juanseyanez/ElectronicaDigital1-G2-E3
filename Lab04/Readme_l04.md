@@ -7,37 +7,39 @@ Este proyecto implementó un cronómetro digital para mostrar el tiempo transcur
 Para el funcionamiento del contador, fue establecido que el sistema recibiera como entradas un reloj de 50 MHz (`clk`), un reset (`rst`) y tres interruptores (`Modo1`, `Modo2`, `Modo3`) para seleccionar el modo de visualización. El tiempo se mostró en un display de 7 segmentos, controlado por los ánodos (`an`) y los segmentos (`seg`) que componían cada dígito. Posterior a eso, en el display de 4 dígitos se mostró el tiempo en distintos formatos según el modo seleccionado.
 
 ```verilog
+```verilog
 module counter(
     input clock,              // Reloj de 50 MHz
     input reset,              // Reset
-    input Modo1,          // Modo de tiempo 1
-    input Modo2,          // Modo de tiempo 2
-    input Modo3,          // Modo de tiempo 3
-    output reg [6:0] seg,   // Segmentos del display
+    input Modo_A,          // Modo de tiempo 1
+    input Modo_B,          // Modo de tiempo 2
+    input Modo_C,          // Modo de tiempo 3
+    output reg [6:0] segmentos,   // Segmentos del display
     output reg [3:0] an     // Ánodos del display
 );
 ```
 
-El contador cuenta con varios parámetros y registros utilizados para manejar el modo de visualización y controlar tanto frecuencia del reloj como la multiplexación del display. Las constantes definen los valores de los contadores para diferentes frecuencias (1 Hz, 10 Hz, 100 Hz y 1 kHz), y un contador principal se utiliza para dividir la señal de reloj entrante.
+El contador dispuso de diferentes parámetros utilizados para manejar el modo de visualización y controlar tanto frecuencia del reloj como la multiplexación del display. Las constantes definen los valores de los contadores para diferentes frecuencias (1 Hz, 10 Hz, 100 Hz y 1 kHz), y un contador principal se utiliza para dividir la señal de reloj entrante.
 
 ```verilog
 parameter f1s = 50000000;     // Contador para 1 Hz
 parameter f01s = 5000000;   // Contador para 10 Hz
 parameter f001s = 500000;     // Contador para 100 Hz
 parameter f0001s = 50000;       // Contador para 1 kHz
-localparam WIDTH = $clog2(cont_1s); // Ancho del contador basado en la mayor frecuencia
-reg [WIDTH-1:0] counter;          // Contador de frecuencia
-reg [1:0] mode;                   // Registro para el modo seleccionado
-reg clk_mode;                     // Señal de reloj modificada según el modo
-reg [13:0] seg_counter;           // Contador para las unidades de tiempo
-reg [1:0] digit_select;           // Selector de dígito activo para la multiplexación
-reg [15:0] mux_counter;           // Contador para generar el reloj de multiplexación
+localparam WIDTH = $clog2(f1s); // Ancho del contador basado en la mayor frecuencia
+reg [WIDTH-1:0] contador_frec;          // Contador de frecuencia
+reg [1:0] modo;                   // Registro para el modo seleccionado
+reg clk_modo;                     // Señal de reloj modificada según el modo
+reg [13:0] contador_seg;           // Contador para las unidades de tiempo
+reg [1:0] digito_activo;           // Selector de dígito activo para la multiplexación
+reg [15:0] mux_contador;           // Contador para generar el reloj de multiplexación
 ```
 
 ## Máquina de Estados y divisor de frecuencias
 
-El sistema implementa una máquina de estados que permite alternar entre los diferentes modos de visualización de tiempo. Dependiendo de la combinación de los interruptores (switch3, switch2, switch1), se asigna un valor al registro mode. Este valor controla la frecuencia con la que el cronómetro realiza el conteo y, en consecuencia, el formato del tiempo que se desplegará en la pantalla.
-Además es vital tener en cuenta que un componente esencial del contador es el divisor de frecuencia, que ajusta la señal de reloj de entrada para generar diferentes frecuencias según el modo de visualización seleccionado. Este divisor cuenta los ciclos del reloj de 50 MHz y emite un pulso en la señal clk_mode cuando se alcanza el valor correspondiente al modo activo. Dicho pulso se utiliza para incrementar el contador de tiempo (seg_counter), encargado de llevar la cuenta de las unidades de tiempo que se muestran en el display.
+El sistema implementó una máquina de estados que permitió alternar entre los diferentes modos de visualización de tiempo. Dependiendo de la combinación de los interruptores (Modo_A, Modo_B, Modo_C), se asignaba un valor al registro modo. Este valor controlaba la frecuencia con la que el cronómetro realizaba el conteo y, en consecuencia, el formato del tiempo que se desplegaba en la pantalla.
+
+Además, se utilizó un divisor de frecuencia para ajustar la señal de reloj de entrada y generar diferentes frecuencias según el modo de visualización seleccionado. Este divisor contaba los ciclos del reloj de 50 MHz y emitía un pulso en la señal clk_modo cuando se alcanzaba el valor correspondiente al modo activo. Dicho pulso se utilizó para incrementar el contador de tiempo (contador_seg), que llevaba la cuenta de las unidades de tiempo que se mostraron en el display.
 
 ```verilog
 always @(posedge clk or posedge rst) begin
@@ -101,63 +103,77 @@ end
 ```
 
 ## Implementación en el 7 Segmentos
-Para controlar los cuatro dígitos del display utilizando un solo conjunto de señales de segmentos (seg), se implementó un proceso de multiplexación. La multiplexación permite activar un dígito a la vez, cambiando entre los dígitos de manera rápida para que todos parezcan encendidos al mismo tiempo.
+Para controlar los cuatro dígitos del display utilizando un solo conjunto de señales de segmentos (segmentos), se implementó un proceso de multiplexación. La multiplexación permitió activar un dígito a la vez, cambiando entre los dígitos de manera rápida para que todos parecieran encendidos al mismo tiempo.
 
-Se genera una señal de multiplexación a aproximadamente 3 kHz mediante un contador (mux_counter). Luego, en cada ciclo del reloj de multiplexación (clk_mux), el sistema selecciona uno de los cuatro dígitos activando el ánodo correspondiente (an). El valor de cada dígito se obtiene dividiendo el contador de tiempo (seg_counter) en unidades, decenas, centenas y millares.
+Se generó una señal de multiplexación a aproximadamente 3 kHz mediante un contador (mux_contador). Luego, en cada ciclo del reloj de multiplexación (clk_mux), el sistema seleccionó uno de los cuatro dígitos activando el ánodo correspondiente (an). El valor de cada dígito se obtuvo dividiendo el contador de tiempo (contador_seg) en unidades, decenas, centenas y millares.
 
 ```verilog
-reg [15:0] mux_counter; // Contador para generar clk_mux
+reg [15:0] mux_contador; // Contador para generar clk_mux
 wire clk_mux;
 
-always @(posedge clk or posedge rst) begin
-    if (rst) begin
-        mux_counter <= 16'd0;
-    end else if (mux_counter == 16'd16666) begin  // 50 MHz / 16,667 ≈ 3 kHz
-        mux_counter <= 16'd0;
+always @(posedge clk or posedge reset) begin
+    if (reset) begin
+        mux_contador <= 16'd0;
+    end else if (mux_contador == 16'd16666) begin  // 50 MHz / 16,667 ≈ 3 kHz
+        mux_contador <= 16'd0;
     end else begin
-        mux_counter <= mux_counter + 1;
+        mux_contador <= mux_contador + 1;
     end
 end
 
-assign clk_mux = (mux_counter == 16'd16666); // Genera un pulso de 3 kHz
+assign clk_mux = (mux_contador == 16'd16666); // Genera un pulso de 3 kHz
 
-always @(posedge clk_mux or posedge rst) begin
-    if (rst) begin
-        digit_select <= 2'd0;
+always @(posedge clk_mux or posedge reset) begin
+    if (reset) begin
+        digito_activo <= 2'd0;
     end else begin
-        digit_select <= digit_select + 1;
+        digito_activo <= digito_activo + 1;
     end
 end
 
 // Segmentación del valor del contador en 4 dígitos
 wire [3:0] dig1, dig2, dig3, dig4;
-assign dig1 = seg_counter % 10;
-assign dig2 = (seg_counter / 10) % 10;
-assign dig3 = (seg_counter / 100) % 10;
-assign dig4 = (seg_counter / 1000) % 10;
+assign dig1 = contador_seg % 10;
+assign dig2 = (contador_seg / 10) % 10;
+assign dig3 = (contador_seg / 100) % 10;
+assign dig4 = (contador_seg / 1000) % 10;
 
-reg [3:0] current_digit; // Dato del dígito actual
+reg [3:0] digito_actual; // Dato del dígito actual
 
 always @(*) begin
-    case (digit_select)
-        2'd0: current_digit = dig1;  // Unidades
-        2'd1: current_digit = dig2;  // Decenas
-        2'd2: current_digit = dig3;  // Centenas
-        2'd3: current_digit = dig4;  // Unidades de millar
-        default: current_digit = 4'd0;
+    case (digito_activo)
+        2'd0: digito_actual = dig1;  // Unidades
+        2'd1: digito_actual = dig2;  // Decenas
+        2'd2: digito_actual = dig3;  // Centenas
+        2'd3: digito_actual = dig4;  // Unidades de millar
+        default: digito_actual = 4'd0;
     endcase
 end
 
-// Lógica para manejar los anodos y segmentos
+// Lógica para manejar los ánodos y segmentos
 always @(*) begin
-    an = 4'b1111;  // Desactivar todos los anodos por defecto
-    case (digit_select)
-        2'd0: an = 4'b1110; // Activar dígito 1
-        2'd1: an = 4'b1101; // Activar dígito 2
-        2'd2: an = 4'b1011; // Activar dígito 3
-        2'd3: an = 4'b0111; // Activar dígito 4
+    an = 4'b1111;  // Desactivar todos los ánodos por defecto
+    case (digito_activo)
+        2'd0: an = 4'b1110; // Activar dígito 0
+        2'd1: an = 4'b1101; // Activar dígito 1
+        2'd2: an = 4'b1011; // Activar dígito 2
+        2'd3: an = 4'b0111; // Activar dígito 3
     endcase
-end  
+
+    case (digito_actual)
+        4'd0: segmentos = 7'b1000000; // 0
+        4'd1: segmentos = 7'b1111001; // 1
+        4'd2: segmentos = 7'b0100100; // 2
+        4'd3: segmentos = 7'b0110000; // 3
+        4'd4: segmentos = 7'b0011001; // 4
+        4'd5: segmentos = 7'b0010010; // 5
+        4'd6: segmentos = 7'b0000010; // 6
+        4'd7: segmentos = 7'b1111000; // 7
+        4'd8: segmentos = 7'b0000000; // 8
+        4'd9: segmentos = 7'b0010000; // 9
+        default: segmentos = 7'b1111111; // Apagar segmentos por defecto
+    endcase
+end
 ```
 
 
@@ -181,6 +197,8 @@ La tercera simulación representa el modo de **milésimas de segundo**. En esta 
 
 ![Simulacion 1k](images/Simulación1kHz.png)
 
+## Conclusión
+El contador digital logró visualizar el tiempo en diferentes formatos, controlado mediante una máquina de estados y un divisor de frecuencia. Los resultados obtenidos cumplieron con las expectativas establecidas para este proyecto. Las pruebas de simulación verificaron la correcta operación de la máquina de estados y la precisión del conteo de tiempo.
 
 ## Vídeo de la implementación del contador en la FPGA
 
