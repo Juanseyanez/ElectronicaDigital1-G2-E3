@@ -165,17 +165,22 @@ Previo a la implementación del código en la FPGA, fue necesario realizar las r
 
 ### Simulación a 1Hz:
 Esta simulación muestra el comportamiento del contador en el modo de **segundos**. El reloj (`clk`) funciona a 50 MHz, y el sistema divide esta señal para contar en segundos completos. Las señales `C[3:0]` y `D[3:0]` representan las unidades y decenas de los segundos en un display de 7 segmentos. La señal `U[3:0]` permanece indefinida en este modo. A medida que el tiempo avanza, se observa cómo `C[3:0]` y `D[3:0]` incrementan su valor, representando el tiempo transcurrido en segundos.
-imagen
+
+![Simulacion 1](images/Simulacion 1Hz.png)
 
 
 ### Simulación a 100Hz:
 En esta simulación, el contador se encuentra en el modo de **centésimas de segundo**. Las señales `C[3:0]` y `D[3:0]` están cambiando más rápidamente en comparación con el modo de segundos, lo que refleja un conteo de centésimas. La frecuencia del reloj ha sido dividida adecuadamente para que el sistema realice el conteo a 100 Hz, permitiendo que las centésimas de segundo se muestren en el display.
-imagen
+
+![Simulacion 100](images/Simulacion 100Hz.png)
+
 
 
 ### Simulación a 1kHz):
 La tercera simulación representa el modo de **milésimas de segundo**. En esta simulación de más larga duración, las señales `C[3:0]` y `D[3:0]` muestran el conteo rápido en milésimas de segundo, lo que implica una división del reloj a 1 kHz. El reloj y las señales avanzan rápidamente debido a la alta frecuencia de conteo, y el sistema está preparado para mostrar milésimas de segundo en el display multiplexado.
-imagen
+
+![Simulacion 1k](images/Simulacion 1kHz.png)
+
 
 ## Vídeo de la implementación del contador en la FPGA
 
