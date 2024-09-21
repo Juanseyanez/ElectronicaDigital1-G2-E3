@@ -106,7 +106,7 @@ Para controlar los cuatro dígitos del display utilizando un solo conjunto de se
 Se genera una señal de multiplexación a aproximadamente 3 kHz mediante un contador (mux_counter). Luego, en cada ciclo del reloj de multiplexación (clk_mux), el sistema selecciona uno de los cuatro dígitos activando el ánodo correspondiente (an). El valor de cada dígito se obtiene dividiendo el contador de tiempo (seg_counter) en unidades, decenas, centenas y millares.
 
 ```verilog
-reg [15:0] mux_counter; // Contador para generar clk_mux (3 kHz)
+reg [15:0] mux_counter; // Contador para generar clk_mux
 wire clk_mux;
 
 always @(posedge clk or posedge rst) begin
@@ -166,20 +166,20 @@ Previo a la implementación del código en la FPGA, fue necesario realizar las r
 ### Simulación a 1Hz:
 Esta simulación muestra el comportamiento del contador en el modo de **segundos**. El reloj (`clk`) funciona a 50 MHz, y el sistema divide esta señal para contar en segundos completos. Las señales `C[3:0]` y `D[3:0]` representan las unidades y decenas de los segundos en un display de 7 segmentos. La señal `U[3:0]` permanece indefinida en este modo. A medida que el tiempo avanza, se observa cómo `C[3:0]` y `D[3:0]` incrementan su valor, representando el tiempo transcurrido en segundos.
 
-![Simulacion 1](images/Simulacion 1Hz.png)
+![Simulacion 1](images/Simulacion1Hz.png)
 
 
 ### Simulación a 100Hz:
 En esta simulación, el contador se encuentra en el modo de **centésimas de segundo**. Las señales `C[3:0]` y `D[3:0]` están cambiando más rápidamente en comparación con el modo de segundos, lo que refleja un conteo de centésimas. La frecuencia del reloj ha sido dividida adecuadamente para que el sistema realice el conteo a 100 Hz, permitiendo que las centésimas de segundo se muestren en el display.
 
-![Simulacion 100](images/Simulacion 100Hz.png)
+![Simulacion 100](images/Simulacion100Hz.png)
 
 
 
 ### Simulación a 1kHz):
 La tercera simulación representa el modo de **milésimas de segundo**. En esta simulación de más larga duración, las señales `C[3:0]` y `D[3:0]` muestran el conteo rápido en milésimas de segundo, lo que implica una división del reloj a 1 kHz. El reloj y las señales avanzan rápidamente debido a la alta frecuencia de conteo, y el sistema está preparado para mostrar milésimas de segundo en el display multiplexado.
 
-![Simulacion 1k](images/Simulacion 1kHz.png)
+![Simulacion 1k](images/Simulacion1kHz.png)
 
 
 ## Vídeo de la implementación del contador en la FPGA
