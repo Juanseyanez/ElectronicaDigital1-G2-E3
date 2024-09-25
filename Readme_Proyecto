@@ -1,0 +1,89 @@
+Para implementar un módulo en Verilog que realice operaciones
+de suma, resta, multiplicación y división usando un conjunto de 
+botones para seleccionar los valores. Aquí, se utilizará un arreglo
+de botones para asignar valores de 3 bits a los operandos A y B, y se utilizarán las señales de control (S, R, M, D) para seleccionar la operación a realizar.
+
+Código Verilog:
+verilog
+Copiar código
+module ALU (
+    input [3:0] buttons,     // 4 botones para asignar valores a A y B
+    input S,                 // Señal para suma
+    input R,                 // Señal para resta
+    input M,                 // Señal para multiplicación
+    input D,                 // Señal para división
+    output reg [7:0] result  // Resultado (8 bits para manejar multiplicación y división
+);
+
+    reg [3:0] A;             // Primer operando (4 bits)
+    reg [3:0] B;             // Segundo operando (4 bits)
+
+    // Asignar valores a A y B basados en los botones
+    always @(*) begin
+        // Asignar A y B basados en el valor de buttons
+        case (buttons)
+            4'b0000: begin A = 4'd0; B = 4'd0; end
+            4'b0001: begin A = 4'd1; B = 4'd1; end
+            4'b0010: begin A = 4'd2; B = 4'd2; end
+            4'b0011: begin A = 4'd3; B = 4'd3; end
+            4'b0100: begin A = 4'd4; B = 4'd4; end
+            4'b0101: begin A = 4'd5; B = 4'd5; end
+            4'b0110: begin A = 4'd6; B = 4'd6; end
+            4'b0111: begin A = 4'd7; B = 4'd7; end
+            4'b1000: begin A = 4'd8; B = 4'd8; end
+            4'b1001: begin A = 4'd9; B = 4'd9; end
+            4'b1010: begin A = 4'd10; B = 4'd10; end
+            4'b1011: begin A = 4'd11; B = 4'd11; end
+            4'b1100: begin A = 4'd12; B = 4'd12; end
+            4'b1101: begin A = 4'd13; B = 4'd13; end
+            4'b1110: begin A = 4'd14; B = 4'd14; end
+            4'b1111: begin A = 4'd15; B = 4'd15; end
+            default: begin A = 4'd0; B = 4'd0; end
+        endcase
+    end
+
+    // Operaciones aritméticas
+    always @(*) begin
+        result = 8'd0; // Inicializar el resultado
+        
+        if (S) begin
+            result = A + B;       // Suma
+        end else if (R) begin
+            result = A - B;       // Resta
+        end else if (M) begin
+            result = A * B;       // Multiplicación
+        end else if (D) begin
+            if (B != 0) begin
+                result[7:4] = A / B;   // Cociente
+                result[3:0] = A % B;   // Resto
+            end else begin
+                result = 8'd0; // División por cero, resultado a 0
+            end
+        end
+    end
+
+endmodule
+Explicación del Código:
+Entradas:
+
+buttons: Un vector de 4 bits que se utiliza para asignar valores a A y B.
+S, R, M, D: Señales de control que indican qué operación realizar.
+Salidas:
+
+result: Un vector de 8 bits que almacena el resultado de la operación.
+Asignación de Valores:
+
+Se utiliza un bloque case para asignar los valores a A y B dependiendo de la combinación de los botones. Esto permite seleccionar los números del 0 al 15 (usando 4 botones como entrada).
+Operaciones Aritméticas:
+
+La lógica de always @(*) evalúa las señales de control para realizar la operación correspondiente:
+Si S es 1, realiza la suma.
+Si R es 1, realiza la resta.
+Si M es 1, realiza la multiplicación.
+Si D es 1, realiza la división, asegurándose de que B no sea cero para evitar errores.
+Manejo de la División:
+
+En la división, el cociente se guarda en los 4 bits más significativos de result, mientras que el resto se guarda en los 4 bits menos significativos.
+Consideraciones:
+Evitar la División por Cero: Se maneja la división por cero asignando result a 0 si B es cero.
+Asumir un solo comando activo: Se asume que solo una señal de operación estará activa a la vez.
