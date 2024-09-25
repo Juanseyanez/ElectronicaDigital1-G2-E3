@@ -88,3 +88,20 @@ En la división, el cociente se guarda en los 4 bits más significativos de resu
 Consideraciones:
 Evitar la División por Cero: Se maneja la división por cero asignando result a 0 si B es cero.
 Asumir un solo comando activo: Se asume que solo una señal de operación estará activa a la vez.
+
+¿Por qué es posible poner
+las operaciones simplificadas 
+en vez de hacer los operadores
+con compuertas lógicas combinadas?
+
+Verilog es un lenguaje de descripción de hardware (HDL) que permite
+a los diseñadores describir el comportamiento y la estructura del hardware 
+a un nivel de abstracción más alto. Esto significa que se pueden utilizar operaciones
+aritméticas directas (como +, -, *, y /) en lugar de describir cada compuerta lógica 
+individualmente.
+
+Los sintetizadores de hardware están diseñados para reconocer operaciones comunes y optimizarlas.
+Por ejemplo, al utilizar A + B, el sintetizador puede identificar la mejor manera de implementar 
+esa suma, ya sea mediante el uso de sumadores dedicados o mediante una combinación de compuertas.
+
+
