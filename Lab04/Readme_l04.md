@@ -202,6 +202,8 @@ El contador digital logró visualizar el tiempo en diferentes formatos, controla
 
 ## Vídeo de la implementación del contador en la FPGA
 
+https://drive.google.com/file/d/1bzw_R0lucJ1jQ1-4JKWDscyS0JplyUAe/view?usp=sharing 
+
 
 
 
